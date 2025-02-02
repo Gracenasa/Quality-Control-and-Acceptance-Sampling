@@ -1,0 +1,3 @@
+S charts are used to monitor process variability using standard deviation rather than range (R charts). 
+
+They are particularly useful when subgroup sizes are large (>10) because standard deviation is a more stable measure of dispersion than range.
