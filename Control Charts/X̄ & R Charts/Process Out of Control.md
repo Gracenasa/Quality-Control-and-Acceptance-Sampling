@@ -79,3 +79,42 @@ R_chart <- qcc(data_cleaned, type = "R")
 ![R chart (ii)](https://github.com/user-attachments/assets/85ddaec5-31d5-4560-ba6d-e0b16403e123)
 
 Our process is now under control and the values obtained from X and R charts can be used as trial limits in the future.
+
+
+Our method of detecting and removing outliers isn't quite efficient, thus we could make use of a function to detect samples who's observations go beyond the limits, remove the sample and store the cleaned dataset.
+
+```{r}
+# Store the control limits
+x_chart_limits <- X_chart$limits
+R_chart_limits <- R_chart$limits
+
+```
+```{r}
+# Create a function 
+detect_outliers <- function(data, x_chart_limits, R_chart_limits) {
+  
+  # Calculate subgroup means and ranges
+  subgroup_means <- rowMeans(data)  
+  subgroup_ranges <- apply(data, 1, function(x) max(x) - min(x))
+  
+  # Identify subgroups exceeding control limits
+  outlier_subgroups <- which(
+    (subgroup_means < x_chart_limits[1] | subgroup_means > x_chart_limits[2]) |
+      (subgroup_ranges < R_chart_limits[1] | subgroup_ranges > R_chart_limits[2])
+  )
+  
+  return(outlier_subgroups)
+}
+
+outlier_indices <- detect_outliers(data_outlier, x_chart_limits, R_chart_limits)
+
+# Remove Outliers
+if (length(outlier_indices) > 0) {
+  data_cleaned <- data_outlier[-outlier_indices, ]
+} else {
+  data_cleaned <- data_matrix  # If no outliers, keep original data
+}
+
+```
+
+We now have a new dataset called data_cleaned free from outliers.
