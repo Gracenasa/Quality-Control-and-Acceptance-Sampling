@@ -36,6 +36,20 @@ R_chart <- qcc(data, type = "R")
 ```
 ![R chart for a process under control](https://github.com/user-attachments/assets/0696a34c-4460-4b81-a20c-8ace943fb377)
 
+# OC Curve for X̄ chart
+```{r}
+beta = oc.curves.xbar(X_chart)
+
+```
+![OC curve for X bar](https://github.com/user-attachments/assets/dd05dd60-da9f-43fe-ad0a-9beae8e8f94d)
+
+# OC Curve for R chart
+```{r}
+beta = oc.curves.R(R_chart)
+
+```
+![OC curve for R](https://github.com/user-attachments/assets/91e755f4-a654-4f78-bd6e-3137ff5f7cab)
+
 
 # Observations
 For the X̄ chart, the UCL = 53.60583 and the LCL =  47.27217. 
