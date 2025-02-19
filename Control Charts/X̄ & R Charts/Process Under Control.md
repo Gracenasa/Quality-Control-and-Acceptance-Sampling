@@ -57,7 +57,9 @@ For the X̄ chart, the UCL = 53.60583 and the LCL =  47.27217.
 For the R chart, the UCL = 9.91942 and the LCL = 0. These are our trial limits.
 
 The X̄ chart shows that the mean of all sample points used lie within the trial limits. (Detecting changes in the process average mean)
+
 The R chart shows that the range of all sample points used lie within the trial limits. (Detecting changes in the process variabilty)
+
 The OC curves for X̄ and R charts, provide information about the probability of not detecting a shift in the process.
 
 # Remarks
